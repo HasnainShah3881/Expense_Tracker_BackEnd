@@ -17,7 +17,7 @@ app.use(express.json());
 
   const allowedOrigins = [
     "http://localhost:5173",
-    "https://expense-tracker-back-end-w9gu.vercel.app/Auth"
+    "https://expense-tracker-back-end-w9gu.vercel.app"
   ];
 app.use(
   cors({
