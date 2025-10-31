@@ -11,7 +11,7 @@ Authrouter.post("/upload", upload.single("image"), (req, res) => {
   try {
     res.json({
       success: true,
-      imageUrl: req.file.path, // Cloudinary URL
+      imageUrl: req.file.path, 
     });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });

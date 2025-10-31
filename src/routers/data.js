@@ -23,7 +23,6 @@ Datarouter.post("/addData", async (req, res) => {
   try {
     const { amount, date, icon, source, name, email } = req.body;
 
-    // Required field validation
     if (!amount || !icon || !source || !name || !email) {
       return res.status(400).json({
         success: false,
@@ -31,7 +30,6 @@ Datarouter.post("/addData", async (req, res) => {
       });
     }
 
-    // Create new transaction
     const newTransaction = new TransactionSchema({
       amount,
       date,

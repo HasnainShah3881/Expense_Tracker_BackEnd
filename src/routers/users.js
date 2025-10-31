@@ -5,10 +5,6 @@ const { User } = require("../models/userSchema");
 const mongoose = require("mongoose");
 
 
-// Usersrouter.get("/getAllUser", (req, res) => {
-//   res.send("get all users success fully");
-// });
-
 Usersrouter.get("/getUser", userAuth, async (req, res) => {
   try {
     const user = req.user;
@@ -34,8 +30,7 @@ Usersrouter.get("/getUser", userAuth, async (req, res) => {
 Usersrouter.patch("/updateUser/:id", async (req, res) => {
   try {
     let { id } = req.params;
-    id = id.replace(":", "").trim(); // ✅ remove unwanted colon
-
+    id = id.replace(":", "").trim(); 
     console.log("Cleaned ID:", id, "Length:", id.length);
 
     if (!mongoose.Types.ObjectId.isValid(id)) {

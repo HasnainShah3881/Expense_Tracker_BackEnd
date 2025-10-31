@@ -10,11 +10,11 @@ const transactionSchema = new mongoose.Schema({
     default: Date.now,
   },
   icon: {
-    type: String, // e.g. "💸" or icon name like "shopping-cart"
+    type: String, 
     required: true, 
   },
   source: {
-    type: String, // e.g. "Salary", "Food", "Rent", "Freelance"
+    type: String, 
     required: true,
   },
   name: {
