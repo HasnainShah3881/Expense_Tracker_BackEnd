@@ -27,51 +27,9 @@ Usersrouter.get("/getUser", userAuth, async (req, res) => {
 
 
 
-Usersrouter.patch("/updateUser/:id", async (req, res) => {
-  try {
-    let { id } = req.params;
-    id = id.replace(":", "").trim(); 
-    console.log("Cleaned ID:", id, "Length:", id.length);
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ success: false, message: "Invalid user ID." });
-    }
-
-    const { firstname, lastname, bio } = req.body;
-
-    if (!firstname && !lastname && !bio) {
-      return res.json({
-        success: false,
-        message: "At least one field (firstname, lastname, bio) is required.",
-      });
-    }
-
-    const updateFields = {};
-    if (firstname) updateFields.firstname = firstname;
-    if (lastname) updateFields.lastname = lastname;
-    if (bio) updateFields.bio = bio;
-
-    const updatedUser = await User.findByIdAndUpdate(
-      id,
-      { $set: updateFields },
-      { new: true }
-    );
-
-    if (!updatedUser) {
-      return res.json({ success: false, message: "User not found." });
-    }
-
-    res.status(200).json({
-      success: true,
-      message: "User updated successfully.",
-      user: updatedUser,  
-    });
-  } catch (error) {
-    console.error("Update Error:", error);
-    res.status(500).json({ success: false, message: error.message });
-  }
-});
 
 
 
 module.exports = Usersrouter;
+
